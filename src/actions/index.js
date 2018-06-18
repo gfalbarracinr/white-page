@@ -1,18 +1,14 @@
-import { todosRef } from "../config/firebase";
-import { FETCH_TODOS } from "./types";
+import { messagesRef } from "../config/firebase";
+import { FETCH_MESSAGES } from "./types";
 
-export const addToDo = newToDo => async dispatch => {
-  todosRef.push().set(newToDo);
+export const addToDo = newMessage => async dispatch => {
+  messagesRef.push().set(newMessage);
 };
 
-export const completeToDo = completeToDoId => async dispatch => {
-  todosRef.child(completeToDoId).remove();
-};
-
-export const fetchToDos = () => async dispatch => {
-  todosRef.on("value", snapshot => {
+export const fetchMessages = () => async dispatch => {
+  messagesRef.on("value", snapshot => {
     dispatch({
-      type: FETCH_TODOS,
+      type: FETCH_MESSAGES,
       payload: snapshot.val()
     });
   });
