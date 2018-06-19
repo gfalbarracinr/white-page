@@ -1,1 +1,1 @@
-export const FETCH_MESSAGES = "FETCH_TODOS";
+export const FETCH_MESSAGES = "FETCH_MESSAGES";

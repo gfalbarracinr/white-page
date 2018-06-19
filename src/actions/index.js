@@ -1,7 +1,7 @@
 import { messagesRef } from "../config/firebase";
 import { FETCH_MESSAGES } from "./types";
 
-export const addToDo = newMessage => async dispatch => {
+export const addMessage = newMessage => async dispatch => {
   messagesRef.push().set(newMessage);
 };
 

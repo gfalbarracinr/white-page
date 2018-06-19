@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import _ from "lodash";
+import * as actions from '../../actions';
 import styled from 'styled-components';
 import Message from '../presentational/Message';
-import DisplayInput from '../presentational/DisplayInput';
+import DisplayInput from '../container/DisplayInput';
 
 const Wrapper = styled.div`
     height: 90vh;
@@ -13,51 +15,43 @@ class MessageComponent extends Component {
     constructor(props){
         super(props);
         this.state = {
-            messages: [],
             drawing: false,
             newMessage: {}
         };
     }
+    componentDidMount() {
+        this.props.fetchMessages();
+    }
     handleClick = (click) =>{
-        console.log(click.clientX, click.clientY);
         this.setState({
-            drawing: true,
             newMessage : {
                 clientX: click.clientX,
                 clientY: click.clientY
-            }
+            },
+            drawing: true
         })
-        // let newMessage = {
-        //     clientX: click.clientX, 
-        //     clientY: click.clientY,
-        //     messageText: "",
-        //     key: Math.floor(Math.random() * (1000 - 0 + 1)) + 0,
-        //     new: true
-        // }
-        
-        // this.setState(prevState => ({
-        //     messages: [...prevState.messages, newMessage]
-        // }));
-        
     }
     render() {
         const newMessage = this.state.newMessage;
+        const { data } = this.props;
         return (
             <Wrapper onClick={this.handleClick}>
-                {this.state.drawing ? React.createElement(DisplayInput, {newMessage}, null ) : "Hola"}
-                {
-                     
-                    this.state.messages.map(currentMessage => (
-                        <Message key={currentMessage.key} message={currentMessage}/>
-                    ))
+                {this.state.drawing ? React.createElement(DisplayInput, {newMessage}, null ) : ""}
+                {  
+                    _.map(data, (value, key) => (
+                        <Message key={key} message={value.message} />
+                      ))
+                    
                 }
             </Wrapper>
         );
     }
 }
 
-MessageComponent.propTypes = {
-
+const mapStateToProps = ({ data }) => {
+    return {
+        data
+    };
 };
 
-export default MessageComponent;
+export default connect(mapStateToProps, actions)(MessageComponent);

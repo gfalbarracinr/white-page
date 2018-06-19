@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Editor, EditorState, convertToRaw } from 'draft-js';
 import onClickOutside from "react-onclickoutside";
+import * as actions from '../../actions';
 
 
 const Wrapper = styled.div`
@@ -21,21 +23,33 @@ class DisplayInput extends Component {
         super(props);
         this.state ={
             editorState: EditorState.createEmpty(),
-            done: false
         }
         
     }
-    handleClickOutside = () => {     
+    makeNewMessage = () =>{
         const currentText = this.state.editorState;
-        console.log("este es el texto a guardar", convertToRaw(currentText.getCurrentContent()))   
+        const text = convertToRaw(currentText.getCurrentContent())
+        if (text.blocks[0].text === ""){
+            return null
+        }
+        return {
+            text,
+            positionX: this.props.newMessage.clientX,
+            positionY: this.props.newMessage.clientY
+        }
+    }
+    
+    handleClickOutside = () => {     
+        const newMessage = this.makeNewMessage();
+        const { addMessage } = this.props;
+        if (newMessage !== null){
+            addMessage({ message: newMessage });
+        }
         this.setState({editorState: EditorState.createEmpty()})
     };
 
     onEditorStateChange = (editorState) => {
-        this.setState({
-            editorState
-        })
-        
+        this.setState({ editorState })
     }
 
     render(){
@@ -50,4 +64,4 @@ class DisplayInput extends Component {
     }
 };
 
-export default onClickOutside(DisplayInput);
+export default connect(null, actions)(onClickOutside(DisplayInput));
