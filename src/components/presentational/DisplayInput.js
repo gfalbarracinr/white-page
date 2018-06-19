@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Editor, EditorState } from 'draft-js';
+import { Editor, EditorState, convertToRaw } from 'draft-js';
 import onClickOutside from "react-onclickoutside";
 
 
@@ -25,12 +25,13 @@ class DisplayInput extends Component {
         }
         
     }
-    handleClickOutside = () => {        
+    handleClickOutside = () => {     
+        const currentText = this.state.editorState;
+        console.log("este es el texto a guardar", convertToRaw(currentText.getCurrentContent()))   
         this.setState({editorState: EditorState.createEmpty()})
     };
 
     onEditorStateChange = (editorState) => {
-        console.log("este es la info", editorState)
         this.setState({
             editorState
         })
