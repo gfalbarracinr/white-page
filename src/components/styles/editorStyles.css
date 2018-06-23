@@ -1,0 +1,26 @@
+.editor {
+    max-width: 400px;
+    max-height: 70px;
+    box-sizing: border-box;
+    cursor: text;
+    padding: 16px;
+    border-radius: 2px;
+    margin-bottom: 2em;
+    box-shadow: inset 0px 1px 8px -3px #ABABAB;
+  }
+  
+.editor :global(.public-DraftEditor-content) {
+  min-height: 140px;
+}
+
+.draftJsToolbar__toolbar__dNtBH{
+  display: flex;
+}
+
+.draftJsToolbar__buttonWrapper__1Dmqh{
+  min-height: 30px;
+}
+
+.button{
+  min-height: 33px;
+}

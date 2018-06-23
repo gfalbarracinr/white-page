@@ -17,10 +17,13 @@ const Message = (props) => {
         entityMap: {},
         blocks:   props.message.text.blocks,
     }
-
     return (
         <MessageStyle message={props.message}> 
-            <SanitizedHTML html = {stateToHTML(convertFromRaw(text))}/>
+            <SanitizedHTML 
+                allowedTags={['h1', 'h2', 'h3', 'u', 'li',
+                'ol', 'em', 'strong', 'code', 'blockquote']}
+                html = {stateToHTML(convertFromRaw(text))}
+            />
         </MessageStyle>
     );
 };
