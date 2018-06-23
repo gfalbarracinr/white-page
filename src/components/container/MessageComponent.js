@@ -23,20 +23,27 @@ class MessageComponent extends Component {
         this.props.fetchMessages();
     }
     handleClick = (click) =>{
-        this.setState({
-            newMessage : {
-                clientX: click.clientX,
-                clientY: click.clientY
-            },
-            drawing: true
-        })
+
+        if (!this.state.drawing){
+            this.setState({
+                newMessage : {
+                    clientX: click.clientX,
+                    clientY: click.clientY
+                },
+                drawing: true
+            })
+        }
+    }
+
+    toggleDrawing = () =>{
+        this.setState({ drawing: !this.state.drawing})
     }
     render() {
         const newMessage = this.state.newMessage;
         const { data } = this.props;
         return (
             <Wrapper onClick={this.handleClick}>
-                {this.state.drawing ? React.createElement(DisplayInput, {newMessage}, null ) : ""}
+                {this.state.drawing ? <DisplayInput newMessage={newMessage} toggleDrawing={this.toggleDrawing} /> : ""}
                 {  
                     _.map(data, (value, key) => (
                         <Message key={key} message={value.message} />
