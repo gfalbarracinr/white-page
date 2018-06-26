@@ -26,10 +26,10 @@ class MessageComponent extends Component {
         };
     }
     fetchLocation = (ip) =>{
-        fetch(`https://ip-api.com/json/${ip}`)
+        fetch(`https://geoipify.whoisxmlapi.com/api/v1?apiKey=at_flrM3dKLUB0wxaabFtWlxUgOUStrI&ipAddress=${ip}`)
       .then(response => response.json())
       .then(data => { 
-          this.setState({city:`${data.city}, ${data.country}`})
+          this.setState({city:`${data.location.city}, ${data.location.country}`})
        });
     }
     componentDidMount() {
