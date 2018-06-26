@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
+    grid-column: 1 / -1;
     display: flex;
     justify-content: center;
     background-color: #f7f4d5;
