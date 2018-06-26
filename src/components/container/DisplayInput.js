@@ -16,7 +16,7 @@ import {
     OrderedListButton,
     BlockquoteButton,
     CodeBlockButton
-  } from 'draft-js-buttons';
+} from 'draft-js-buttons';
 
 
 const Wrapper = styled.div`
@@ -79,7 +79,8 @@ class DisplayInput extends Component {
         return {
             text,
             positionX: this.props.newMessage.clientX,
-            positionY: this.props.newMessage.clientY
+            positionY: this.props.newMessage.clientY,
+            city: this.props.newMessage.city
         }
     }
     
