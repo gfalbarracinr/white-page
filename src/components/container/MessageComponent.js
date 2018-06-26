@@ -26,7 +26,7 @@ class MessageComponent extends Component {
         };
     }
     fetchLocation = (ip) =>{
-        fetch(`http://ip-api.com/json/${ip}`)
+        fetch(`https://ip-api.com/json/${ip}`)
       .then(response => response.json())
       .then(data => { 
           this.setState({city:`${data.city}, ${data.country}`})
