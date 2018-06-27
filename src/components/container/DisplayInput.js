@@ -20,6 +20,7 @@ import {
 
 
 const Wrapper = styled.div`
+    text-align:left;
     display: inline-block;
     position: absolute;
     padding: 10px;

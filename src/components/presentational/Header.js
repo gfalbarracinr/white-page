@@ -1,31 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import {IoGrid, IoInformatcircled, IoIosContact} from 'react-icons/lib/io';
+import ReactToolTip from 'react-tooltip';
 
 const Wrapper = styled.div`
-    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    padding-left: 5px;
     display: flex;
-    justify-content: center;
-    background-color: #f7f4d5;
-    border-bottom: 0.5px solid #575757;
-`
-const WrapperLink = styled.div`
-    justify-content: space-around;
-    min-width: 200px;
-    display: flex;
+    flex-direction: column;
 `
 const AboutTag = styled.h3`
-    margin-left: auto;
-    padding-right: 2%;
+    margin-top: auto;
 `
 const Header = () => {
     return (
         <Wrapper>
-            <WrapperLink>
-                <h3><Link to="/">Wall</Link></h3>
-                <h3><Link to="/info">Info</Link></h3>
-            </WrapperLink>
-            <AboutTag><Link to="/about">About</Link></AboutTag>
+            <h3 data-tip="Wall"><Link to="/"><IoGrid/></Link></h3>
+            <h3 data-tip="Info"><Link to="/info"><IoInformatcircled/></Link></h3>
+            <AboutTag data-tip="About"> <Link to="/about"><IoIosContact/></Link></AboutTag>
+            <ReactToolTip/>
         </Wrapper>
     );
 };

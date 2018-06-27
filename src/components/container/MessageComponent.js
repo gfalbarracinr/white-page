@@ -2,17 +2,32 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from "lodash";
 import * as actions from '../../actions';
-import styled from 'styled-components';
 import Message from '../container/Message';
 import DisplayInput from '../container/DisplayInput';
+import "../styles/mapStyles.css"
+import styled, { injectGlobal } from 'styled-components';
 
-const Wrapper = styled.div`
-    grid-row: 0 / -1;
-    height: 90vh;
-    width: 98vw;
+injectGlobal`
+    @import url('https://fonts.googleapis.com/css?family=Markazi+Text');
+
+`
+const publicIp = require('public-ip');
+
+
+const WrappTitle = styled.div`
+    text-align: center;
+    font-family: 'Markazi Text', serif;
 `
 
-const publicIp = require('public-ip');
+const Hr = styled.hr`
+    margin-top: -15px;
+    margin-left: 10%;
+    margin-right: 10%;
+`
+
+const WrappWall = styled.div`
+    text-align: center;
+`
 
 
 class MessageComponent extends Component {
@@ -64,7 +79,9 @@ class MessageComponent extends Component {
         const newMessage = this.state.newMessage;
         const { data } = this.props;
         return (
-            <Wrapper onClick={this.handleClick}>
+            <WrappWall>
+                <WrappTitle><h1>THE WHITE PAGE</h1> <Hr/></WrappTitle>
+            <div className="scrollbar" id="style-15" onClick={this.handleClick}>
                 {this.state.drawing && !this.state.visible ? <DisplayInput newMessage={newMessage} toggleDrawing={this.toggleDrawing} /> : ""}
                 {  
                     _.map(data, (value, key) => (
@@ -72,7 +89,9 @@ class MessageComponent extends Component {
                       ))
                     
                 }
-            </Wrapper>
+                <div className="force-overflow"/>
+            </div>
+            </WrappWall>
         );
     }
 }

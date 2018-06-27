@@ -5,8 +5,11 @@ import MessageComponent from '../container/MessageComponent';
 import styled from 'styled-components';
 
 
-const Wrapp = styled.div`
-    display: grid;
+const Wrapper = styled.div`
+
+    display:grid;
+    grid-template-columns: 2.5vw 96vw;
+    grid-template-rows: 100vh;
 
 `
 
@@ -14,10 +17,10 @@ const Wrapp = styled.div`
 class Index extends Component {
     render() {
         return (
-            <Wrapp>
+            <Wrapper>
                 <Header history={this.props.history}/>
                 <MessageComponent/>
-            </Wrapp>
+            </Wrapper>
         );
     }
 }
