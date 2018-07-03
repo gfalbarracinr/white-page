@@ -59,18 +59,22 @@ class MessageComponent extends Component {
         if(!this.state.drawing){
             this.setState({
                 newMessage : {
-                    clientX: click.clientX,
-                    clientY: click.clientY,
+                    clientX: click.clientX + document.getElementById("style-15").scrollLeft - 20,
+                    clientY: click.clientY + document.getElementById("style-15").scrollTop - 80,
                     city: this.state.city
                 }
             })
             this.toggleDrawing()
         }
+        
     }
 
     hideEditor  = (visible) =>{
         this.setState({visible})
         this.forceUpdate()
+    }
+    handleScroll = (event) =>{
+        console.log(event)
     }
     toggleDrawing = () =>{
         this.setState({ drawing: !this.state.drawing})

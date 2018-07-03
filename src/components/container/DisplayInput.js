@@ -19,12 +19,15 @@ import {
 } from 'draft-js-buttons';
 
 
+
+
 const Wrapper = styled.div`
     text-align:left;
     display: inline-block;
     position: absolute;
     padding: 10px;
-    min-width: 350px;
+    padding-top: 35px;
+    min-width: 324px;
     min-height: 20px;
     top: ${props => props.message.clientY}px;
     left: ${props => props.message.clientX}px;
@@ -34,7 +37,7 @@ const Wrapper = styled.div`
 const WrapperToolBar = styled.div`
   z-index: 1;
   position: absolute;
-  top: ${props => props.message.clientY - 70}px;
+  top: ${props => props.message.clientY}px;
   left: ${props => props.message.clientX}px;
 
 `
@@ -77,6 +80,7 @@ class DisplayInput extends Component {
         if (text.blocks[0].text === ""){
             return null
         }
+        
         return {
             text,
             positionX: this.props.newMessage.clientX,

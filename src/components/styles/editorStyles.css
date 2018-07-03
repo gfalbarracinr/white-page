@@ -1,6 +1,12 @@
 .editor :global(.public-DraftEditor-content) {
   min-height: 140px;
 }
+.DraftEditor-root {
+  cursor: text;
+  padding: 16px;
+  border-radius: 2px;
+}
+
 
 .draftJsToolbar__toolbar__dNtBH{
   display: flex;
