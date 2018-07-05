@@ -26,18 +26,19 @@ const Wrapper = styled.div`
     display: inline-block;
     position: absolute;
     padding: 10px;
-    padding-top: 35px;
     min-width: 324px;
     min-height: 20px;
     top: ${props => props.message.clientY}px;
     left: ${props => props.message.clientX}px;
-    border: 1px solid black;
+    border-style: ridge;
+    border-width: 1px;
+    border-radius: 10px;
 `
 
 const WrapperToolBar = styled.div`
   z-index: 1;
   position: absolute;
-  top: ${props => props.message.clientY}px;
+  top: ${props => props.message.clientY - 40}px;
   left: ${props => props.message.clientX}px;
 
 `

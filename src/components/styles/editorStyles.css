@@ -10,12 +10,32 @@
 
 .draftJsToolbar__toolbar__dNtBH{
   display: flex;
+  min-height: 30px;
+}
+.draftJsToolbar__toolbar__dNtBH > div{
+  display: flex;
 }
 
 .draftJsToolbar__buttonWrapper__1Dmqh{
   min-height: 30px;
+  background-color: white;
 }
 
 .button{
+  background-color: White;
+  color: black;
   min-height: 33px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.button:hover{
+  padding: 10px;
+}
+.draftJsToolbar__button__qi1gf{
+  cursor: pointer;
+  background-color: white;
+  border-radius: 10px;
+}
+.draftJsToolbar__button__qi1gf :hover{
+  padding: 3px;
 }

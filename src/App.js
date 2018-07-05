@@ -4,7 +4,9 @@ import Index from "./components/presentational/Index";
 import Info from "./components/presentational/Info";
 import About from "./components/presentational/About";
 
+
 class App extends Component {
+  
   render() {
     return (
       <Router>

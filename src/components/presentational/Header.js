@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import {IoGrid, IoInformatcircled, IoIosContact} from 'react-icons/lib/io';
 import ReactToolTip from 'react-tooltip';
+import EnableButton from './EnableButton';
 
 const Wrapper = styled.div`
     grid-row: 1 / -1;
@@ -18,6 +19,7 @@ const Header = () => {
         <Wrapper>
             <h3 data-tip="Wall"><Link to="/"><IoGrid/></Link></h3>
             <h3 data-tip="Info"><Link to="/info"><IoInformatcircled/></Link></h3>
+            <EnableButton/>
             <AboutTag data-tip="About"> <Link to="/about"><IoIosContact/></Link></AboutTag>
             <ReactToolTip/>
         </Wrapper>

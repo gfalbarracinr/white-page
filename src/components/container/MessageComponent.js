@@ -6,6 +6,7 @@ import Message from '../container/Message';
 import DisplayInput from '../container/DisplayInput';
 import "../styles/mapStyles.css"
 import styled, { injectGlobal } from 'styled-components';
+import WritingTool from '../../context';
 
 injectGlobal`
     @import url('https://fonts.googleapis.com/css?family=Markazi+Text');
@@ -86,7 +87,9 @@ class MessageComponent extends Component {
             <WrappWall>
                 <WrappTitle><h1>THE WHITE PAGE</h1> <Hr/></WrappTitle>
             <div className="scrollbar" id="style-15" onClick={this.handleClick}>
-                {this.state.drawing && !this.state.visible ? <DisplayInput newMessage={newMessage} toggleDrawing={this.toggleDrawing} /> : ""}
+                <WritingTool.Consumer>
+                    { ({writing}) => (this.state.drawing && !this.state.visible && writing ? <DisplayInput newMessage={newMessage} toggleDrawing={this.toggleDrawing} /> : "")}
+                </WritingTool.Consumer>
                 {  
                     _.map(data, (value, key) => (
                         <Message key={key} message={value.message} hideEditor={this.hideEditor}/>

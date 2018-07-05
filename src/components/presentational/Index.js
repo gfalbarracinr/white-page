@@ -3,6 +3,7 @@ import Header from '../presentational/Header';
 import { withRouter } from 'react-router-dom';
 import MessageComponent from '../container/MessageComponent';
 import styled from 'styled-components';
+import WritingTool from '../../context';
 
 
 const Wrapper = styled.div`
@@ -15,11 +16,23 @@ const Wrapper = styled.div`
 
 
 class Index extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            writing: false,
+            toggleWriting: this.toggleWriting
+        }
+    }
+    toggleWriting = (enable) =>{
+        this.setState({writing: enable})
+    }
     render() {
         return (
             <Wrapper>
-                <Header history={this.props.history}/>
-                <MessageComponent/>
+                <WritingTool.Provider value={this.state}>
+                    <Header history={this.props.history}/>
+                    <MessageComponent/>
+                </WritingTool.Provider>
             </Wrapper>
         );
     }

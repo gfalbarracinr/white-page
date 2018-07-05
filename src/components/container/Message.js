@@ -12,14 +12,19 @@ const MessageStyle = styled.div`
     position: absolute;
     top: ${props => props.message.positionY}px;
     left: ${props => props.message.positionX}px;
+    margin: 0;
+    cursor: pointer;
     
 `
 const MessageContent = styled.div`
     padding: 10px;
     border: ${props => props.visible ? "1px solid #b1bfb8" : "none"};
     border-radius: 10px;
+    margin: 0;
 
-
+    & > div > h1,h2,h3{
+        margin: 0;  
+    }
 `
 const Location = styled.p`
     font-size: 70%;
