@@ -1,2 +1,0 @@
-export const FETCH_MESSAGES = "FETCH_MESSAGES";
-export const SET_VISIBLE = "SET_VISIBLE";
