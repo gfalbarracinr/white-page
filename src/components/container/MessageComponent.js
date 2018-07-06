@@ -7,12 +7,13 @@ import DisplayInput from '../container/DisplayInput';
 import "../styles/mapStyles.css"
 import styled, { injectGlobal } from 'styled-components';
 import WritingTool from '../../context';
+import ExtGeolocation from '@hypersprite/react-geolocation-hoc';
 
 injectGlobal`
     @import url('https://fonts.googleapis.com/css?family=Markazi+Text');
 
 `
-const publicIp = require('public-ip');
+
 
 
 const WrappTitle = styled.div`
@@ -38,25 +39,24 @@ class MessageComponent extends Component {
             drawing: false,
             newMessage: {},
             visible: false,
-            city: ""
+            city: "Anonymous"
         };
     }
-    fetchLocation = (ip) =>{
-        fetch(`https://geoipify.whoisxmlapi.com/api/v1?apiKey=at_flrM3dKLUB0wxaabFtWlxUgOUStrI&ipAddress=${ip}`)
-      .then(response => response.json())
-      .then(data => { 
-          this.setState({city:`${data.location.city}, ${data.location.country}`})
-       });
-    }
+  
     componentDidMount() {
-        let ipResponse="" 
-        publicIp.v4().then(ip => {
-            ipResponse = ip
-        });
-        this.fetchLocation(ipResponse)
         this.props.fetchMessages();
     }
     handleClick = (click) =>{
+        fetch(`https://api.opencagedata.com/geocode/v1/json?q=${this.props.lat}+${this.props.lng}&key=05f3cbf13e3d4984b54a7332c148741c
+        `)
+        .then(response => response.json())
+        .then(data => {
+            if (data.results[0].components.city === undefined){
+                this.setState({city:'Anonymous'})    
+            }else{
+                this.setState({city:`${data.results[0].components.city}, ${data.results[0].components.country}`})
+            }
+        })
         if(!this.state.drawing){
             this.setState({
                 newMessage : {
@@ -109,4 +109,4 @@ const mapStateToProps = ({ data }) => {
     };
 };
 
-export default connect(mapStateToProps, actions)(MessageComponent);
+export default ExtGeolocation(connect(mapStateToProps, actions)(MessageComponent));

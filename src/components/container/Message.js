@@ -5,8 +5,6 @@ import SanitizedHTML from 'react-sanitized-html';
 import styled from 'styled-components';
 import onClickOutside from "react-onclickoutside";
 
-
-
 const MessageStyle = styled.div`
     display: block;
     position: absolute;
