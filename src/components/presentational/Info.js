@@ -116,12 +116,12 @@ const Info = (history) => {
                 </ul>
                 <SocialMedia>
                     <TwitterShareButton
-                    url={"https://gfalbarracinr.github.io/whitepage/"} title = "I'd like to invite you to write in #TheWhitePage @GioAlbarracin"
+                    url={"https://whitepageapp.herokuapp.com/"} title = "I'd like to invite you to write in #TheWhitePage @GioAlbarracin"
                     >
                         <TwitterIcon size={32} round={false} />
                     </TwitterShareButton>
                     <FacebookShareButton
-                    url={"https://gfalbarracinr.github.io/whitepage/"} quote = "I'd like to invite you to write in The White Page at" 
+                    url={"https://whitepageapp.herokuapp.com/"} quote = "I'd like to invite you to write in The White Page at" 
                     >
                         <FacebookIcon size={32} round={false}/>
                     </FacebookShareButton>
