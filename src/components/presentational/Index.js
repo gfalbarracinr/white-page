@@ -24,7 +24,7 @@ class Index extends Component {
         }
     }
     toggleWriting = (enable) =>{
-        this.setState({writing: enable})
+        this.setState({ writing: enable })
     }
     render() {
         return (

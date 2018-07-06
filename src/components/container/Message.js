@@ -19,6 +19,8 @@ const MessageStyle = styled.div`
 const MessageContent = styled.div`
     padding: 10px;
     border: ${props => props.visible ? "1px solid #b1bfb8" : "none"};
+    z-index: ${ props => props.visible ? "1" : "initial"};
+    background-color: ${ props => props.visible ? "#fffbf6" : "initial"};
     border-radius: 10px;
     margin: 0;
 
@@ -31,6 +33,9 @@ const Location = styled.p`
     text-align:right;
     margin-top: 0;
     display: ${ props => props.visible ? "block" : "none"};
+    z-index: ${ props => props.visible ? "1" : "initial"};
+    background-color: ${ props => props.visible ? "#fffbf6" : "initial"};
+
 `
 class Message extends Component{
     constructor (props){

@@ -9,7 +9,9 @@ const Wrapper = styled.div`
     grid-row: 1 / -1;
     padding-left: 5px;
     display: flex;
+    height: 100%;
     flex-direction: column;
+    
 `
 const AboutTag = styled.h3`
     margin-top: auto;
