@@ -11,9 +11,9 @@ class App extends Component {
     return (
       <Router>
        <div>
-        <Route exact path='/' component={() =>Index}/>
-        <Route exact path='/info' component={() =>Info}/>
-        <Route exact path='/about' component={() =>About}/>
+        <Route exact path='/' component={Index}/>
+        <Route exact path='/info' component={Info}/>
+        <Route exact path='/about' component={About}/>
        </div>
       </Router>
     );
